@@ -20,7 +20,7 @@ public class Student {
         this.name = name;
         this.surname = surname;
         this.age = age;
-        this.email = email;
+        this.email = email.toLowerCase();
         this.group = group;
         this.faculty = faculty;
     }
@@ -54,7 +54,7 @@ public class Student {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email.toLowerCase();
     }
 
     public String getGroup() {

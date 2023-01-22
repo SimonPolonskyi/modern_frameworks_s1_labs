@@ -43,7 +43,6 @@ public class calculateStatus extends HttpServlet {
         List<Student> students = (List<Student>)session.getAttribute("students");
         
         StatsCalculator stat = StatsCalculator.getInstatnce();
-        stat.setAverageAge(Utils.calculateAgeAge((LinkedList<Student>)students));
         stat.setMinAge( Utils.calculateMinAge((LinkedList<Student>)students));
         stat.setMaxAge(Utils.calculateMaxAge((LinkedList<Student>)students));        
         Utils.printStudentsList((LinkedList<Student>)students);
@@ -57,7 +56,12 @@ public class calculateStatus extends HttpServlet {
         } catch (EmailException ex) {
             Logger.getLogger(calculateStatus.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
+        try {
+            stat.setAverageAge(Utils.calculateAverageAge((LinkedList<Student>)students));
+        } catch (AgeException ex) {
+            Logger.getLogger(calculateStatus.class.getName()).log(Level.SEVERE, null, ex);
+        }       
+        
        // System.out.println(stat);
         session.setAttribute("stat", stat);
         response.sendRedirect("statout.jsp");

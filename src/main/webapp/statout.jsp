@@ -60,6 +60,7 @@
                             <td><label for="surname">Sumdu Mails:</label></td> 
                             <td>${stat.getSumDUMails()}</td>
 			</tr>
+                      <!--  <tr><td  colspan="2"><a href="/index.jsp" target="target">Back to main</a></td></tr> -->
 		</tbody>
 	</table> 
 </body> 

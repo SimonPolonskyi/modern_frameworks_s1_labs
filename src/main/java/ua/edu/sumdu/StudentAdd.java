@@ -50,15 +50,19 @@ public class StudentAdd extends HttpServlet {
 
     HttpSession session = request.getSession();
     List<Student> students = (List<Student>)session.getAttribute("students");
+    
     if (students==null){
         students = new LinkedList<Student>(); 
         session.setAttribute("students", students);
     }
 
     if (request.getParameter("name")!=""||request.getParameter("surname")!=""){
+        String age ="0";
+        if (!request.getParameter("age").isEmpty()&& request.getParameter("age")!=null )
+            age = request.getParameter("age");
         Student student = new Student(request.getParameter("name"),
                                 request.getParameter("surname"),
-                                   request.getParameter("age"),
+                                   age,
                                  request.getParameter("email"),
                                  request.getParameter("group"),
                                 request.getParameter("faculty"));

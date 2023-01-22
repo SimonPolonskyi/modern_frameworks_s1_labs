@@ -57,17 +57,16 @@ public class Utils {
     }
     
     
-    public static double calculateAgeAge(LinkedList<Student> studs) {
+    public static double calculateAverageAge(LinkedList<Student> studs) throws AgeException {
         double tempAge=0;
         int count=0;
         for(Student st: studs){
-            int age=0;
-          //  try {
-            age=Integer.parseInt(st.getAge());
-            //} catch 
+            int age=age=Integer.parseInt(st.getAge());
             if (age>0) {
                 tempAge+=age;
                 count++;
+            }else{
+               throw new AgeException();
             }
         }
         if(count==0) {return -1;}
@@ -97,7 +96,7 @@ public class Utils {
     }
     
      public static boolean sumduPatternMatches (String emailAddress) {
-        String regexPattern="^[a-zA-Z0-9_.+-]+@sumdu.edu.ua";
+        String regexPattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9_.+-]*sumdu.edu.ua";
         return Pattern.compile(regexPattern).matcher(emailAddress).matches();
     }
        
@@ -109,7 +108,7 @@ public class Utils {
         int count=0;
     
         for (Student st:studs) {
-            if (Utils.getEmailDomain(st.getEmail()).equals("sumdu.edu.ua")) 
+            if (Utils.sumduPatternMatches(st.getEmail())) 
                 count++;            
         }
     return count;
