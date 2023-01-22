@@ -43,8 +43,8 @@ public class Utils {
         Set<String> keys= mails.keySet ();
         int max=0;
         for (String current:keys) {
-            if (max < mails.get(current)) {
-            max = mails.get (current);
+            if (max <= mails.get(current)) {
+                max = mails.get (current);
             
                 if (popularDomain.length()==0){
                     popularDomain = current;
