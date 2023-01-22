@@ -61,7 +61,10 @@ public class Utils {
         double tempAge=0;
         int count=0;
         for(Student st: studs){
-            int age=Integer.parseInt(st.getAge());
+            int age=0;
+          //  try {
+            age=Integer.parseInt(st.getAge());
+            //} catch 
             if (age>0) {
                 tempAge+=age;
                 count++;

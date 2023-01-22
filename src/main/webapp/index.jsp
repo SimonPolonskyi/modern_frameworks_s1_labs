@@ -51,7 +51,7 @@
                      </tr>
                      <tr>
                          <td><label for="age">Age</td>
-                         <td><input id="age" type="text" name="age"></td>
+                         <td><input id="age" type="number" name="age"></td>
                      </tr>
                      <tr>
                          <td><label for="emai">Emai</td>
@@ -92,5 +92,11 @@
                         </c:forEach>                                   
                     </table>                    
                 </c:if>
+                <c:if test="${students.size() > 1}">
+                    <form action="calculateStatus">
+                        <input type="submit" name="send2" value="Statistic">
+                    </form>            
+                </c:if>
+        
     </body>
 </html>
