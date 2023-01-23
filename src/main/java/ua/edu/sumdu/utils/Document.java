@@ -62,7 +62,7 @@ public class Document {
         for(Subject sub:scores){
             out+="<b>"+sub.isPass()+"</b> "+sub.getName()+":"+sub.getScore()+";<br>";
         }
-        System.out.println("HTML:           "+out);
+      //  System.out.println("HTML:           "+out);
         return out;
     }    
     
