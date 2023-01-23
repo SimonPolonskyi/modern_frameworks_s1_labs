@@ -34,6 +34,9 @@
             .list td, .list th {
                 padding: 10px;
             }
+            table th {
+                background-color: #deefff;
+            }
         </style>
     </head>
     <body>
@@ -73,23 +76,27 @@
                 <c:if test="${students.size() > 0}"> 
                     <table class="list">
                         <tr>
+                            <th>ID</th>
                             <th>Name</th>
                             <th>Surname</th>
+                            <th>Scores</th>
                             <th>Age</th>
                             <th>Email</th>
-                            <td>Group</td>
-                            <td>Faculty</td>
-                        </tr>   
+                            <th>Group</th>
+                            <th>Faculty</th>
+                        </tr>
                         <c:forEach var="student" items="${students}">
                             <tr>
+                                <td><c:out value="${student.getDoc().getId()}"/></td>
                                 <td><c:out value="${student.getName()}"/></td>
                                 <td><c:out value="${student.getSurname()}"/></td>
+                                <td><c:out escapeXml="false"  value="${student.getDoc().toHTML()}"/></td>
                                 <td><c:out value="${student.getAge()}"/></td>
                                 <td><c:out value="${student.getEmail()}"/></td>
                                 <td><c:out value="${student.getGroup()}"/></td>
-                                <td><c:out value="${student.getFaculty()}"/></td>                                
+                                <td><c:out value="${student.getFaculty()}"/></td>
                             </tr>
-                        </c:forEach>                                   
+                        </c:forEach>                              
                     </table>                    
                 </c:if>
                 <c:if test="${students.size() > 1}">

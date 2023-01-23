@@ -2,8 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package ua.edu.sumdu;
+package ua.edu.sumdu.servlets;
 
+import ua.edu.sumdu.customexceptions.EmailException;
+import ua.edu.sumdu.customexceptions.AgeException;
+import ua.edu.sumdu.utils.Utils;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedList;
@@ -16,7 +19,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import ua.edu.sumdu.StatsCalculator;
+import ua.edu.sumdu.utils.StatsCalculator;
+import ua.edu.sumdu.utils.StatsCalculator;
+import ua.edu.sumdu.utils.Student;
 
 
 

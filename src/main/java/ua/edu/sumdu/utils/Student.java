@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ua.edu.sumdu;
+package ua.edu.sumdu.utils;
 
 /**
  *
@@ -15,7 +15,11 @@ public class Student {
     private String email;
     private String group;
     private String faculty;
+    private Document doc;
 
+    public Student() {
+    }
+    
     public Student(String name, String surname, String age, String email, String group, String faculty) {
         this.name = name;
         this.surname = surname;
@@ -71,6 +75,14 @@ public class Student {
 
     public void setFaculty(String faculty) {
         this.faculty = faculty;
+    }
+
+    public Document getDoc() {
+        return doc;
+    }
+
+    public void setDoc(Document doc) {
+        this.doc = doc;
     }
     
     

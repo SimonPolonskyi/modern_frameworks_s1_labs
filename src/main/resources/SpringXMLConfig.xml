@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+">
+    <bean id="Doc" class="ua.edu.sumdu.utils.Document">
+        <constructor-arg value="Java OOP"></constructor-arg>
+        <constructor-arg value="Java EE"></constructor-arg>
+        <constructor-arg value="Frameworks"></constructor-arg>
+    </bean>    
+    
+    <bean id="Student" class="ua.edu.sumdu.utils.Student" scope="singleton">
+        <property name="doc" ref="Doc"></property>
+    </bean>
+    <bean id="Subject" class="ua.edu.sumdu.utils.Subject" scope="prototype">
+    </bean>    
+</beans>

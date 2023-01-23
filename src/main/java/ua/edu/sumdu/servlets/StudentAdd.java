@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package ua.edu.sumdu;
+package ua.edu.sumdu.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import ua.edu.sumdu.utils.Student;
 
 /**
  *
@@ -33,44 +36,35 @@ public class StudentAdd extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-/*        response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-*/            /* TODO output your page here. You may use following sample code. */
- /*            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet StudentAdd</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet StudentAdd at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-*/    
-
-    HttpSession session = request.getSession();
-    List<Student> students = (List<Student>)session.getAttribute("students");
+ 
+        ApplicationContext factory = new ClassPathXmlApplicationContext("/SpringXMLConfig.xml");
+        HttpSession session = request.getSession();
+        List<Student> students = (List<Student>)session.getAttribute("students");
     
-    if (students==null){
-        students = new LinkedList<Student>(); 
-        session.setAttribute("students", students);
-    }
+        if (students==null){
+            students = new LinkedList<Student>(); 
+            session.setAttribute("students", students);
+        }
 
-    if (request.getParameter("name")!=""||request.getParameter("surname")!=""){
-        String age ="0";
-        if (!request.getParameter("age").isEmpty()&& request.getParameter("age")!=null )
-            age = request.getParameter("age");
-        Student student = new Student(request.getParameter("name"),
-                                request.getParameter("surname"),
-                                   age,
-                                 request.getParameter("email"),
-                                 request.getParameter("group"),
-                                request.getParameter("faculty"));
-        students.add(student);
-    }
-    response.sendRedirect("index.jsp");
+        if (request.getParameter("name") != "" && request.getParameter("surname") != "") {
+            Student student = (Student)factory.getBean("Student");
+            
+            String age ="0";
+            if (!request.getParameter("age").isEmpty()&& request.getParameter("age")!=null )
+                age = request.getParameter("age");            
+        
+            student.setName(request.getParameter("name"));
+            student.setSurname(request.getParameter("surname"));
+            student.setAge(request.getParameter("age"));
+            student.setEmail(request.getParameter("email"));
+            student.setGroup(request.getParameter("group"));
+            student.setFaculty(request.getParameter("faculty"));
+            students.add(student);
+        }        
+        
+        response.sendRedirect("index.jsp");
 
-}
+    }
 
     /**
      * Handles the HTTP <code>POST</code> method.
