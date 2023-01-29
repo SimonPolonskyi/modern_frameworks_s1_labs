@@ -21,16 +21,16 @@ public class StatsCalculator {
     private StatsCalculator(){    
     }
     
-    public static StatsCalculator getInstatnce(){   
+    public static StatsCalculator getInstance(){   
         if(instance==null){
             instance= new StatsCalculator();
         }
         return instance;
     }
     
-    public static StatsCalculator getInstance() {
+ /*   public static StatsCalculator getInstance() {
         return instance;
-    }
+    } */
 
     public static void setInstance(StatsCalculator instance) {
         StatsCalculator.instance = instance;

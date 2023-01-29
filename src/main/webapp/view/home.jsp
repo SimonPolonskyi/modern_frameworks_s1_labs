@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index.jsp
-    Created on : Dec 17, 2022, 5:27:38 PM
+    Document   : home.jsp
+    Created on : Jan 29, 2023, 6:09:29 PM
     Author     : polonskiy
 --%>
 
@@ -93,15 +93,24 @@
                                 <td><c:out escapeXml="false"  value="${student.getDoc().toHTML()}"/></td>
                                 <td><c:out value="${student.getAge()}"/></td>
                                 <td><c:out value="${student.getEmail()}"/></td>
-                                <td><c:out value="${student.getGroup()}"/></td>
-                                <td><c:out value="${student.getFaculty()}"/></td>
+                                <td>
+                                    <form action="filterGroup" method="get">
+                                        <input type="submit" name="filter" value="${student.getGroup()}">
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="filterFaculty" method="get">
+                                        <input type="submit" name="filter" value="${student.getFaculty()}">
+                                    </form>
+                                </td>                                
                             </tr>
                         </c:forEach>                              
                     </table>                    
                 </c:if>
                 <c:if test="${students.size() > 1}">
-                    <form action="calculateStatus">
+                    <form action="calculateStats" method="post">
                         <input type="submit" name="send2" value="Statistic">
+                        
                     </form>            
                 </c:if>
         
